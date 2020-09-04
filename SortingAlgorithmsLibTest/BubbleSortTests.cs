@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
 using System.Resources;
 
@@ -137,6 +138,139 @@ namespace SortingAlgorithmsLibTests
             // Arrange
             double[] actualItems = new double[] { 13.15, 4.96 };
             double[] expectedItems = new double[] { 4.96, 13.15 };
+
+            // Act
+            SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+
+        #endregion
+
+        #region DateTime
+
+        [TestMethod]
+        public void BubbleSort_DateTimeIListSorted_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            }; 
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+
+            // Act
+            SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void BubbleSort_DateTimeIListOneSwap_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            // Act
+            SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void BubbleSort_DateTimeRandomIList_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            // Act
+            SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void BubbleSort_EmptyDateTimeIList_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] { };
+            DateTime[] expectedItems = new DateTime[] { };
+
+            // Act
+            SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void BubbleSort_DateTimeIListWithTwoItems_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] { new DateTime(2010, 6, 1, 8, 30, 52), new DateTime(2010, 5, 1, 8, 30, 52) };
+            DateTime[] expectedItems = new DateTime[] { new DateTime(2010, 5, 1, 8, 30, 52), new DateTime(2010, 6, 1, 8, 30, 52) };
 
             // Act
             SortingAlgorithms.SortingAlgorithms.BubbleSort(actualItems);

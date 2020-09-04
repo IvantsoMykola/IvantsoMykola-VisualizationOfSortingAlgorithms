@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
 using System.Resources;
 
@@ -147,6 +148,138 @@ namespace SortingAlgorithmsLibTests
 
         #endregion
 
+        #region DateTime
+
+        [TestMethod]
+        public void MergeSort_DateTimeIListSorted_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+
+            // Act
+            actualItems = SortingAlgorithms.SortingAlgorithms.MergeSort(actualItems) as DateTime[];
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void MergeSort_DateTimeIListOneSwap_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            // Act
+            actualItems = SortingAlgorithms.SortingAlgorithms.MergeSort(actualItems) as DateTime[];
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void MergeSort_DateTimeRandomIList_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            DateTime[] expectedItems = new DateTime[] {
+                new DateTime(2008, 5, 1, 8, 30, 52),
+                new DateTime(2009, 5, 1, 8, 30, 52),
+                new DateTime(2010, 5, 1, 8, 30, 52),
+                new DateTime(2010, 6, 1, 8, 30, 52),
+                new DateTime(2010, 7, 1, 8, 30, 52),
+                new DateTime(2010, 8, 2, 8, 30, 52),
+                new DateTime(2010, 8, 5, 8, 30, 52),
+                new DateTime(2010, 8, 5, 10, 30, 52),
+                new DateTime(2010, 8, 5, 10, 38, 52)
+            };
+            // Act
+            actualItems = SortingAlgorithms.SortingAlgorithms.MergeSort(actualItems) as DateTime[];
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void MergeSort_EmptyDateTimeIList_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] { };
+            DateTime[] expectedItems = new DateTime[] { };
+
+            // Act
+            actualItems = SortingAlgorithms.SortingAlgorithms.MergeSort(actualItems) as DateTime[];
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+        [TestMethod]
+        public void MergeSort_DateTimeIListWithTwoItems_SortedItemsReturned()
+        {
+            // Arrange
+            //YYYY, M, D, H, M, S
+            DateTime[] actualItems = new DateTime[] { new DateTime(2010, 6, 1, 8, 30, 52), new DateTime(2010, 5, 1, 8, 30, 52) };
+            DateTime[] expectedItems = new DateTime[] { new DateTime(2010, 5, 1, 8, 30, 52), new DateTime(2010, 6, 1, 8, 30, 52) };
+
+            // Act
+            actualItems = SortingAlgorithms.SortingAlgorithms.MergeSort(actualItems) as DateTime[];
+
+            // Assert
+            CollectionAssert.AreEqual(expectedItems, actualItems);
+        }
+
+        #endregion
 
         #region BigDataTests
 
