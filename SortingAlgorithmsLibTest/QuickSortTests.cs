@@ -1,4 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
+using System.Resources;
+using System.Threading;
 
 namespace SortingAlgorithmsLibTests
 {
@@ -144,5 +148,36 @@ namespace SortingAlgorithmsLibTests
         }
 
         #endregion
+
+        #region BigDataTests
+
+        
+
+        [TestMethod]
+        public void QuickSort_Sort1000000IntItems_SortedItemsReturned()
+        {
+            // Arrange
+            ResourceManager resourceManager = SortingAlgorithmsLibTests.IntegerData.ResourceManager;
+            var actualString = resourceManager.GetString("UnsortedInteger");
+            var expectedString = resourceManager.GetString("SortedInteger");
+            var actualStringList = actualString.Split("\r\n");
+            var expectedStringList = expectedString.Split("\r\n");
+            actualStringList = actualStringList.Where(item => int.TryParse(item, out _)).ToArray();
+            expectedStringList = expectedStringList.Where(item => int.TryParse(item, out _)).ToArray();
+            var actualValue = actualStringList.ToList().Select(item => int.Parse(item)).ToArray();
+            var expectedValue = expectedStringList.ToList().Select(item => int.Parse(item)).ToArray();
+
+            
+            // Act
+            actualValue = SortingAlgorithms.SortingAlgorithms.QuickSort(actualValue) as int[];
+            
+            // Assert
+
+            CollectionAssert.AreEqual(expectedValue, actualValue);
+
+        }
+
+        #endregion
+
     }
 }

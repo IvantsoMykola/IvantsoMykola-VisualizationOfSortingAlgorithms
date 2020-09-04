@@ -149,6 +149,7 @@ namespace SortingAlgorithms
 
         }
 
+        //TODO Need better algorithm
         public static IList<T> QuickSort<T>(IList<T> items) where T : IComparable<T>
         {
             if(items.Count <= 1)
@@ -158,9 +159,11 @@ namespace SortingAlgorithms
             Random random = new Random();
             int randomIndex = random.Next(0, items.Count);
             T pivot = items[randomIndex];
-            IList<T> left = items.Where(item => item.CompareTo(pivot) < 0).ToList();
-            IList<T> right = items.Where(item => item.CompareTo(pivot) >= 0).ToList();
-            return QuickSort(left).Concat(QuickSort(right)).ToArray();
+            items = items.Take(randomIndex).Concat(items.Skip(randomIndex + 1)).ToList();
+            IList<T> left = QuickSort(items.Where(item => item.CompareTo(pivot) < 0).ToList());
+            IList<T> right = QuickSort(items.Where(item => item.CompareTo(pivot) >= 0).ToList());
+            left = left.Concat(new T[] { pivot }).ToList();
+            return left.Concat(right).ToArray();
         }
     }
 }

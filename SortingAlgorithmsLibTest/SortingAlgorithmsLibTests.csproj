@@ -17,4 +17,19 @@
     <ProjectReference Include="..\SortingAlgorithms\SortingAlgorithms.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="IntegerData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IntegerData.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="IntegerData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IntegerData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
